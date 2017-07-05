@@ -2,7 +2,13 @@ version: '2'
 
 services:
   jenkins:
-    image: chavomar/jenkins:0.0.6
+    image: chavezom/jenkins:0.0.8
+    environment:
+      - http_proxy="http://proxy.houston.hpecorp.net:8080"
+      - https_proxy="http://proxy.houston.hpecorp.net:8080"
+      - HTTP_PROXY="http://proxy.houston.hpecorp.net:8080"
+      - HTTPS_PROXY="http://proxy.houston.hpecorp.net:8080"
+      - JAVA_OPTS=-Dhttp.proxyHost=proxy.houston.hpecorp.net -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.houston.hpecorp.net -Dhttps.proxyPort=8080
     ports:
       - "8080:8080"
     volumes: 

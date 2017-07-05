@@ -1,5 +1,5 @@
-# docker build --build-arg http_proxy=http://proxy.houston.hpecorp.net:8080 --build-arg https_proxy=http://proxy.houston.hpecorp.net:8080 -t chavezom/jenkins:0.0.6 .
-# docker push chavezom/jenkins:0.0.6
+# docker build --build-arg http_proxy=http://proxy.houston.hpecorp.net:8080 --build-arg https_proxy=http://proxy.houston.hpecorp.net:8080 -t chavezom/jenkins:0.0.8 .
+# docker push chavezom/jenkins:0.0.8
 
 FROM jenkins:latest
 USER root
@@ -24,11 +24,11 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-co
 RUN chmod +x /usr/local/bin/docker-compose
 
 USER jenkins
-COPY plugins.txt /usr/share/jenkins/plugins.txt
-RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+#COPY plugins.txt /usr/share/jenkins/plugins.txt
+#RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
 
-COPY github-authorization.groovy /usr/share/jenkins/ref/init.groovy.d/github-authorization.groovy
-COPY github-authentication.groovy /usr/share/jenkins/ref/init.groovy.d/github-authentication.groovy
+#COPY github-authorization.groovy /usr/share/jenkins/ref/init.groovy.d/github-authorization.groovy
+#COPY github-authentication.groovy /usr/share/jenkins/ref/init.groovy.d/github-authentication.groovy
 
 EXPOSE 8080
 EXPOSE 50000
